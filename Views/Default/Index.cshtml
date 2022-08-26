@@ -1,0 +1,44 @@
+﻿@model IEnumerable< CRUDHTNLHELPERS.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@Html.ActionLink("Create", "Create", "Default", htmlAttributes: new { @class = "btn btn-primary btn-outline-success" })
+<br />
+<br />
+<br />
+
+<table class="table table-bordered border-1 border-primary table-striped table-hover table-dark">
+    <tr>
+        <th>@Html.DisplayNameFor(er => er.id) </th>
+        <th>@Html.DisplayNameFor(r => r.fname)  </th>
+        <th> @Html.DisplayNameFor(r => r.lname)    </th>
+        <th> @Html.DisplayNameFor(r => r.age)    </th>
+        <th> @Html.DisplayNameFor(r => r.Email) </th>
+        <th> @Html.DisplayNameFor(r => r.URL) </th>
+
+
+    </tr>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(ite => item.id) </td>
+            <td>@Html.DisplayFor(ite => item.fname) </td>
+            <td>@Html.DisplayFor(ite => item.lname) </td>
+            <td>@Html.DisplayFor(ite => item.age) </td>
+            <td>@Html.DisplayFor(ite => item.Email) </td>
+            <td>@Html.DisplayFor(ite => item.URL) </td>
+
+            <td> 
+                @Html.ActionLink("Edit", "Edit", "Default", routeValues: new { id = item.id }, htmlAttributes: new { @class = "btn btn-secondary " })
+                 @Html.ActionLink("details", "showdetails", "Default", routeValues: new { id = item.id }, htmlAttributes: new { @class = "btn btn-warning " }) 
+                 @Html.ActionLink("Delete", "delete", "Default", routeValues: new { id = item.id }, htmlAttributes: new { @class = "btn btn-danger",onclick=$"return confirm('are you sure you want to delete  { item.fname+" "+item.lname} ')" })  
+            </td>
+
+        </tr>
+        }
+
+    </tbody>  
+</table>
